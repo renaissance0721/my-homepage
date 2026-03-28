@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的赛博自留地</title>
+    <style>
+        /* ====== 主题颜色配置区 ====== */
+        :root {
+            --theme-pink: #ffb7b2; /* 猛男粉 */
+            --theme-blue: #a7c7e7; /* 治愈蓝 */
+            --text-color: #555;
+            --title-color: #333;
+            /* 👇 在这里替换你的背景图链接，建议找一张好看的二次元横图 👇 */
+            --bg-image: url('https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1920&auto=format&fit=crop'); 
+        }
+
+        /* 基础页面设置 */
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-image: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* 核心毛玻璃卡片 */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85); /* 调整0.85可以改变透明度 */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-sizing: border-box;
+        }
+
+        /* 头像设置 */
+        .avatar-box {
+            text-align: center;
+            margin-top: -80px; /* 让头像往上凸起一点，更有设计感 */
+        }
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(255, 183, 178, 0.6);
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .avatar:hover {
+            transform: rotate(360deg); /* 鼠标放上去会转圈圈 */
+        }
+
+        /* 标题和简介 */
+        .header-text {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: var(--title-color);
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            background: linear-gradient(45deg, var(--theme-pink), var(--theme-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* 标题渐变色 */
+        }
+        .badge {
+            display: inline-block;
+            background: var(--theme-blue);
+            color: white;
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* 自我介绍区域 */
+        .about-me {
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 4px solid var(--theme-pink);
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* 分类标题 */
+        h2 {
+            font-size: 1.2rem;
+            color: var(--theme-blue);
+            margin-bottom: 15px;
+            border-bottom: 2px dashed var(--theme-pink);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* 链接按钮盒子 */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            display: block;
+            text-align: center;
+            background: white;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 12px 10px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, var(--theme-pink), var(--theme-blue));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(167, 199, 231, 0.5);
+        }
+
+        /* 强调按钮（博客和探针） */
+        .btn-primary {
+            grid-column: 1 / -1; /* 占据整行 */
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            color: white;
+            font-size: 1.1rem;
+            padding: 15px;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--theme-pink), var(--theme-blue));
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="avatar-box">
+            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Felix&backgroundColor=ffb7b2" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="header-text">
+            <h1>星海的观测站</h1>
+            <span class="badge">永远对世界保持好奇</span>
+        </div>
+
+        <div class="about-me">
+            👋 你好呀！这里是一个大一学生的赛博小窝。<br><br>
+            目前主修国贸与大数据双学位，游走在经济学理论和一行行 Python 与 C++ 代码之间。日常沉迷折腾 Linux 个人服务器，喜欢日本街头复古穿搭，也是 Yorushika 摘不掉耳机的狂热粉。<br><br>
+            梦想是等搞定微积分和线性代数，夏天去日本东北或者土耳其痛快地走一走。很高兴在这个数字荒野里遇见你！
+        </div>
+
+        <h2>✨ 我的自建领地</h2>
+        <div class="links-grid">
+            <a href="https://blog.yurucamp.vip" target="_blank" class="btn btn-primary">📖 访问我的个人博客 (Yuru Camp)</a>
+            <a href="https://monitor.genshinniubi.top" target="_blank" class="btn btn-primary">📊 全球探针监控面板 (Komari)</a>
+        </div>
+
+        <h2>💻 极客与折腾</h2>
+        <div class="links-grid">
+            <a href="https://www.itdog.cn/" target="_blank" class="btn">ITDog 测速</a>
+            <a href="https://www.nodeseek.com/" target="_blank" class="btn">NodeSeek</a>
+            <a href="https://hostloc.com/" target="_blank" class="btn">HostLoc</a>
+            <a href="https://github.com/" target="_blank" class="btn">GitHub</a>
+        </div>
+
+        <h2>🎮 精神食粮</h2>
+        <div class="links-grid">
+            <a href="https://singlelogin.re/" target="_blank" class="btn">Z-Library</a>
+            <a href="https://store.steampowered.com/" target="_blank" class="btn">Steam</a>
+        </div>
+
+        <footer>
+            © 2026 Made with ❤️ by a Server Geek.
+        </footer>
+
+    </div>
+
+</body>
+</html>
