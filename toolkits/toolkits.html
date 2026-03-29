@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Toolkits | 夕凪の观测站</title>
+    <style>
+        /* ====== 摇曳黄昏主题变量 (完全继承主页) ====== */
+        :root {
+            --neon-cyan: #00f0ff;
+            --neon-pink: #ff007c;
+            --dark-bg: #1a1025; 
+            --panel-bg: rgba(30, 20, 45, 0.8); 
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0c0;
+            --font-tech: 'Courier New', Consolas, monospace;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 60px 15px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 背景：紫罗兰色微光与电子网格结合 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 70%),
+                        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 35px 35px, 35px 35px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 核心终端面板 */
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            border-radius: 12px;
+            padding: 40px 35px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(138, 43, 226, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            width: 15px; height: 15px;
+            border: 2px solid var(--neon-cyan);
+            pointer-events: none;
+        }
+        .container::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .container::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+        /* 返回按钮样式 */
+        .back-btn {
+            display: inline-block;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-family: var(--font-tech);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            padding: 6px 12px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 4px;
+            background: rgba(0, 240, 255, 0.05);
+            transition: 0.3s;
+        }
+        .back-btn:hover { 
+            color: #fff; 
+            background: rgba(0, 240, 255, 0.2);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+        }
+
+        /* 标题区 */
+        h1 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin: 0 0 5px 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px rgba(255, 0, 124, 0.8), -2px -2px 0px rgba(0, 240, 255, 0.8);
+            display: inline-block;
+        }
+        h1:hover {
+            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
+        .sys-status {
+            font-family: var(--font-tech);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* 分类标题 */
+        h2 {
+            font-size: 1.1rem;
+            color: var(--neon-cyan);
+            margin-bottom: 18px;
+            padding-bottom: 6px;
+            border-bottom: 1px dashed rgba(138, 43, 226, 0.5);
+            font-family: var(--font-tech);
+        }
+        h2::before { content: '> '; color: var(--neon-pink); }
+
+        /* 链接网格 */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(25, 15, 40, 0.6);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 12px 10px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 4px;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 3px; height: 100%;
+            background: var(--neon-cyan);
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+        .btn-title { font-size: 0.95rem; font-weight: bold; margin-bottom: 4px; }
+        .btn-sub { font-family: var(--font-tech); font-size: 0.65rem; color: #9090b0; }
+        
+        .btn:hover {
+            background: rgba(0, 240, 255, 0.12);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+            transform: translateY(-3px);
+            border-color: var(--neon-cyan);
+        }
+        .btn:hover::before { opacity: 1; }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8080a0;
+            margin-top: 40px;
+            font-family: var(--font-tech);
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <a href="../index.html" class="back-btn">< 返回主站 [HOME]</a>
+
+        <div>
+            <h1>DATABASE // TOOLKITS</h1>
+            <div class="sys-status">> SYSTEM_STATUS: ALL_TOOLS_READY</div>
+        </div>
+
+        <h2>System & Hardware</h2>
+        <div class="links-grid">
+            <a href="https://www.tbtool.cn/" target="_blank" class="btn">
+                <span class="btn-title">图吧工具箱</span>
+                <span class="btn-sub">HARDWARE_TEST</span>
+            </a>
+            <a href="https://i4.cn/" target="_blank" class="btn">
+                <span class="btn-title">爱思助手</span>
+                <span class="btn-sub">MOBILE_MGR</span>
+            </a>
+        </div>
+
+        <h2>Files & Downloads</h2>
+        <div class="links-grid">
+            <a href="https://www.7-zip.org/" target="_blank" class="btn">
+                <span class="btn-title">7-Zip</span>
+                <span class="btn-sub">DECOMPRESS</span>
+            </a>
+            <a href="https://cn.bandisoft.com/bandizip/" target="_blank" class="btn">
+                <span class="btn-title">Bandizip</span>
+                <span class="btn-sub">DECOMPRESS</span>
+            </a>
+            <a href="https://www.internetdownloadmanager.com/" target="_blank" class="btn">
+                <span class="btn-title">IDM 下载器</span>
+                <span class="btn-sub">DL_MANAGER</span>
+            </a>
+        </div>
+
+        <h2>Knowledge & Storage</h2>
+        <div class="links-grid">
+            <a href="https://wikipedia.org" target="_blank" class="btn">
+                <span class="btn-title">Wikipedia</span>
+                <span class="btn-sub">KNOWLEDGE_DB</span>
+            </a>
+            <a href="https://nodeimage.com/" target="_blank" class="btn">
+                <span class="btn-title">NodeImage</span>
+                <span class="btn-sub">IMG_HOSTING</span>
+            </a>
+        </div>
+
+        <footer>
+            TWILIGHT.SEQUENCE © 2026 // ESTABLISHED BY 夕凪.
+        </footer>
+
+    </div>
+
+</body>
+</html>
