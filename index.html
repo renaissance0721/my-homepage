@@ -9,8 +9,8 @@
         :root {
             --neon-cyan: #00f0ff;
             --neon-pink: #ff007c;
-            --dark-bg: #1a1025; /* 深紫色底色 */
-            --panel-bg: rgba(30, 20, 45, 0.8); /* 带有紫调的半透明面板 */
+            --dark-bg: #1a1025; 
+            --panel-bg: rgba(30, 20, 45, 0.8); 
             --text-main: #e0e0e0;
             --text-dim: #a0a0c0;
             --font-tech: 'Courier New', Consolas, monospace;
@@ -44,7 +44,7 @@
             z-index: 0;
         }
 
-        /* 核心终端面板 - 增加紫色光晕效果 */
+        /* 核心终端面板 */
         .container {
             max-width: 650px;
             width: 100%;
@@ -98,7 +98,6 @@
             background: #100a18;
             transition: transform 0.5s ease, box-shadow 0.3s ease;
         }
-        /* 保持原有旋转效果 */
         .avatar:hover {
             transform: rotate(360deg) scale(1.05);
             box-shadow: 0 0 25px var(--neon-pink), 0 0 40px var(--neon-cyan);
@@ -113,7 +112,6 @@
             margin-bottom: 25px;
         }
         
-        /* 保持原有标题抖动效果 */
         h1 {
             color: #fff;
             font-size: 2.2rem;
@@ -155,7 +153,7 @@
             border-color: rgba(255, 0, 124, 0.3);
         }
 
-        /* 简介区域 - 保持原文本内容 */
+        /* 简介区域 */
         .about-me {
             background: rgba(0, 0, 0, 0.4);
             border-left: 3px solid var(--neon-pink);
@@ -223,6 +221,7 @@
             padding-bottom: 6px;
             border-bottom: 1px dashed rgba(138, 43, 226, 0.5);
             font-family: var(--font-tech);
+            text-transform: uppercase;
         }
         h2::before { content: '> '; color: var(--neon-pink); }
 
@@ -234,7 +233,7 @@
             margin-bottom: 30px;
         }
 
-        /* 保持原有按钮悬浮效果 */
+        /* 普通按钮样式 */
         .btn {
             display: flex;
             flex-direction: column;
@@ -269,19 +268,21 @@
         }
         .btn:hover::before { opacity: 1; }
 
-        /* 强调按钮 */
+        /* 强调按钮 / 文件夹跳转按钮 */
         .btn-primary {
             grid-column: 1 / -1; 
             background: rgba(255, 0, 124, 0.08);
             border-color: rgba(255, 0, 124, 0.4);
+            margin-top: 8px; /* 和上面的小节点拉开一点距离 */
         }
         .btn-primary::before { background: var(--neon-pink); }
-        .btn-primary .btn-title { color: var(--neon-pink); }
+        .btn-primary .btn-title { color: var(--neon-pink); font-size: 1.05rem;}
         .btn-primary:hover {
             background: rgba(255, 0, 124, 0.2);
             box-shadow: 0 5px 20px rgba(255, 0, 124, 0.3);
             border-color: var(--neon-pink);
         }
+        .btn-primary:hover .btn-title { color: #fff; }
 
         footer {
             text-align: center;
@@ -332,17 +333,17 @@
 
         <h2>Sys.Deployments</h2>
         <div class="links-grid">
-            <a href="https://blog.yurucamp.vip" target="_blank" class="btn btn-primary">
+            <a href="https://blog.yurucamp.vip" target="_blank" class="btn">
                 <span class="btn-title">📖 我的个人博客</span>
                 <span class="btn-sub">// DATASET: YURU_CAMP.VIP</span>
             </a>
-            <a href="https://monitor.genshinniubi.top" target="_blank" class="btn btn-primary">
-                <span class="btn-title">📊 我的探针监控(基于Komari)</span>
+            <a href="https://monitor.genshinniubi.top" target="_blank" class="btn">
+                <span class="btn-title">📊 我的探针监控</span>
                 <span class="btn-sub">// NETWORK_PROBE: ACTIVE</span>
             </a>
         </div>
 
-        <h2>Dev.Nodes</h2>
+        <h2>Nodes</h2>
         <div class="links-grid">
             <a href="https://www.nodeseek.com/" target="_blank" class="btn">
                 <span class="btn-title">NodeSeek</span>
@@ -360,18 +361,6 @@
                 <span class="btn-title">Cloudflare</span>
                 <span class="btn-sub">NETWORK</span>
             </a>
-            <a href="https://www.spaceship.com" target="_blank" class="btn">
-                <span class="btn-title">Spaceship</span>
-                <span class="btn-sub">DOMAINS</span>
-            </a>
-            <a href="https://www.v2ex.com" target="_blank" class="btn">
-                <span class="btn-title">V2EX</span>
-                <span class="btn-sub">COMMUNITY</span>
-            </a>
-        </div>
-
-        <h2>Net.Diagnostics</h2>
-        <div class="links-grid">
             <a href="https://www.itdog.cn/" target="_blank" class="btn">
                 <span class="btn-title">ITDog 测速</span>
                 <span class="btn-sub">SPEED_TEST</span>
@@ -380,25 +369,14 @@
                 <span class="btn-title">Ping0</span>
                 <span class="btn-sub">IP_LOOKUP</span>
             </a>
-            <a href="https://iplark.com/" target="_blank" class="btn">
-                <span class="btn-title">IPLark</span>
-                <span class="btn-sub">IP_INFO</span>
-            </a>
-            <a href="https://www.ipqualityscore.com/" target="_blank" class="btn">
-                <span class="btn-title">IPQS</span>
-                <span class="btn-sub">RISK_SCAN</span>
-            </a>
-            <a href="https://www.ip2location.com/database" target="_blank" class="btn">
-                <span class="btn-title">IP2Location</span>
-                <span class="btn-sub">DATABASE</span>
-            </a>
-            <a href="https://www.nodequality.com" target="_blank" class="btn">
-                <span class="btn-title">NodeQuality</span>
-                <span class="btn-sub">SCORING</span>
+            
+            <a href="nodes/nodes.html" class="btn btn-primary">
+                <span class="btn-title">>>> 访问完整 Nodes 节点库 <<<</span>
+                <span class="btn-sub">// OPEN DIRECTORY: /nodes/</span>
             </a>
         </div>
 
-        <h2>Tool.Kits</h2>
+        <h2>Toolkits</h2>
         <div class="links-grid">
             <a href="https://wikipedia.org" target="_blank" class="btn">
                 <span class="btn-title">Wikipedia</span>
@@ -416,17 +394,14 @@
                 <span class="btn-title">IDM</span>
                 <span class="btn-sub">DOWNLOADER</span>
             </a>
-            <a href="https://www.tbtool.cn/" target="_blank" class="btn">
-                <span class="btn-title">图吧工具箱</span>
-                <span class="btn-sub">HARDWARE</span>
-            </a>
-            <a href="https://i4.cn/" target="_blank" class="btn">
-                <span class="btn-title">爱思助手</span>
-                <span class="btn-sub">MOBILE_MGR</span>
+            
+            <a href="toolkits/toolkits.html" class="btn btn-primary">
+                <span class="btn-title">>>> 访问完整 Toolkits 工具箱 <<<</span>
+                <span class="btn-sub">// OPEN DIRECTORY: /toolkits/</span>
             </a>
         </div>
 
-        <h2>Media.Library</h2>
+        <h2>Archive</h2>
         <div class="links-grid">
             <a href="https://zh.z-lib.sk/" target="_blank" class="btn">
                 <span class="btn-title">Z-Library(需魔法)</span>
@@ -444,13 +419,10 @@
                 <span class="btn-title">Bangumi</span>
                 <span class="btn-sub">ACG_DB</span>
             </a>
-        </div>
 
-        <h2>Storage.Img</h2>
-        <div class="links-grid">
-            <a href="https://nodeimage.com/" target="_blank" class="btn">
-                <span class="btn-title">NodeImage</span>
-                <span class="btn-sub">IMG_HOSTING</span>
+            <a href="archive/archive.html" class="btn btn-primary">
+                <span class="btn-title">>>> 访问完整 Archive 档案馆 <<<</span>
+                <span class="btn-sub">// OPEN DIRECTORY: /archive/</span>
             </a>
         </div>
 
