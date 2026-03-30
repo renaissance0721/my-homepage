@@ -22,6 +22,7 @@ The observatory is structured into specific modules to maintain a clean separati
 │   └── toolkits.html   # System diagnostics, AI models, and market charts
 └── archive/            # Intellectual Peak & Digital Library
     └── archive.html    # Literature, premium press, and ACG databases
+```
 🚀 Core Modules
 1. Sys.Deployments
 The control panel for my self-hosted ecosystem.
