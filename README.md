@@ -23,8 +23,8 @@ The observatory is structured into specific modules to maintain a clean separati
 └── archive/            # Intellectual Peak & Digital Library
     └── archive.html    # Literature, premium press, and ACG databases
 ```
-🚀 Core Modules
-1. Sys.Deployments
+🚀 ## Core Modules
+### 1. Sys.Deployments
 The control panel for my self-hosted ecosystem.
 
 Personal Blog: My digital garden for tech and life notes.
@@ -33,16 +33,16 @@ Network Probe: Real-time server status and uptime monitoring.
 
 VPS Value Evaluator: A self-developed tool for calculating server cost-efficiency.
 
-2. Nodes (Dev & Infrastructure)
+### 2. Nodes (Dev & Infrastructure)
 A curated collection of developer communities (NodeSeek, HostLoc, V2EX), network diagnostics (BGP.he.net, PeeringDB), and proxy/bypass configurations tailored for server management.
 
-3. Toolkits (Productivity)
+### 3. Toolkits (Productivity)
 Tools aligned with my academic and technical pursuits. Features data visualization platforms (Kaggle, JSON Crack) and global trade utilities (TradingView, DeepL).
 
-4. Archive (Knowledge Base)
+### 4. Archive (Knowledge Base)
 My digital library and reading room. Includes access to premium global press (The Economist, The New Yorker) and hubs for ACG culture (Bangumi, Steam).
 
-🎨 Design & Tech Stack
+🎨 ## Design & Tech Stack
 Pure HTML/CSS: Zero dependencies. Lightweight, blazing fast, and easily deployable.
 
 Neon Twilight UI: Custom CSS variables utilizing neon-cyan and neon-pink against a dark violet grid backdrop.
@@ -51,7 +51,7 @@ Dynamic Elements: Features CSS-animated radar scanning effects, glitch-text head
 
 Responsive: Fully optimized for both desktop and mobile terminals.
 
-👤 About the Creator
+👤## About the Creator
 Undergraduate student currently pursuing a dual bachelor's degree in International Economics and Trade & Data Science and Big Data Technology.
 
 Passionate about exploring server infrastructure, writing Python/C++ code, and understanding global economic logic. When not wrestling with mathematics, I find my peace in the music of Yorushika, watching Yuru Camp, and writing poetry for the Xianmeng Poetry Society.
